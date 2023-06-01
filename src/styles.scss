@@ -1,0 +1,54 @@
+.card{
+    background: #22222290;
+    width: calc(25% - 1rem);
+    border-radius: 4px;
+    overflow: hidden;
+
+    &__img{
+        width: 100%;
+        height: 451px;
+    }
+    &__info{
+        padding: 0.5rem 1rem;
+    }
+    &__title{
+        font-size: 18px;
+        font-weight: 700;
+        color: #FFFFFF97;
+        margin-bottom: 0.5rem;
+    }
+    &__row{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__desc{
+        font-size: 16px;
+        color: #FFFFFF90;
+        font-weight: 500;
+    }
+  }
+
+  .list{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .search__block{
+    padding-top: 0.5rem;
+    position: relative;
+  }
+
+  .btn{
+    position: absolute;
+    top: .5rem;
+    right: 0;
+  }
+
+  .filters{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+  }
+  
+  
