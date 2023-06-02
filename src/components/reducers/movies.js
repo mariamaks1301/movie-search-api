@@ -6,7 +6,7 @@ export const getMovies = createAsyncThunk(
     'movies/getMovies',
     async (_, {rejectWithValue}) => {
         try {
-            const res = await axios(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
+            const res = await axios(`https://www.omdbapi.com/?apikey=690f307a&s=matrix`)
             if(res.data.Response !== 'True'){
                 throw new Error('Can\'t fetch  data movies')
             }
@@ -35,7 +35,7 @@ export const searchMovies = createAsyncThunk(
     async (search, {rejectWithValue}) => {
 
         try {
-            const res = await axios(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`)
+            const res = await axios(`https://www.omdbapi.com/?apikey=690f307a&s=${search}`)
               if(res.data.Response !== 'True'){
                   throw new Error('Can\'t fetch search data movies')
               }
