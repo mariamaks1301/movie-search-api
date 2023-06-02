@@ -5,6 +5,8 @@ import MovieList from './MovieList';
 import { getMovies, searchMovies, searchMoviesPage } from './reducers/movies';
 import throttle from 'lodash/throttle';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 
 
 const Main = ({movies, setMovies, search}) => {

@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const getMovies = createAsyncThunk(
     'movies/getMovies',
     async (_, {rejectWithValue}) => {
         try {
-            const res = await axios('https://www.omdbapi.com/?apikey=690f307a&s=matrix')
+            const res = await axios(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
             if(res.data.Response !== 'True'){
                 throw new Error('Can\'t fetch  data movies')
             }
@@ -34,7 +35,7 @@ export const searchMovies = createAsyncThunk(
     async (search, {rejectWithValue}) => {
 
         try {
-            const res = await axios(`https://www.omdbapi.com/?apikey=690f307a&s=${search}`)
+            const res = await axios(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`)
               if(res.data.Response !== 'True'){
                   throw new Error('Can\'t fetch search data movies')
               }
@@ -50,26 +51,7 @@ export const searchMovies = createAsyncThunk(
    
 )
 
-export const searchMoviesPage = createAsyncThunk(
-    'movies/searchMoviesPage',
-    async (search, {rejectWithValue}) => {
 
-        try {
-            const res = await axios(`http://www.omdbapi.com/?apikey=690f307a&s=${search}&page=2`)
-              if(res.data.Response !== 'True'){
-                  throw new Error('Can\'t fetch search data movies')
-              }
-        
-            return res.data.Search
-
-
-        } catch (error) {
-            return rejectWithValue(error.message, 'Catch fetch search data')
-            
-        }
-    }
-   
-)
 
 const initialState = {
     data: [],
