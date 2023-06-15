@@ -52,6 +52,28 @@ export const searchMovies = createAsyncThunk(
 )
 
 
+export const nextPage = createAsyncThunk(
+    'movies/nextPage',
+    async (search, {rejectWithValue}) => {
+
+        try {
+            const res = await axios(`https://www.omdbapi.com/?apikey=690f307a&s=${search}&p=2`)
+              if(res.data.Response !== 'True'){
+                  throw new Error('Can\'t fetch search data movies')
+              }
+        
+            return res.data.Search
+
+
+        } catch (error) {
+            return rejectWithValue(error.message, 'Catch fetch search data')
+            
+        }
+    }
+   
+)
+
+
 
 const initialState = {
     data: [],
@@ -97,6 +119,10 @@ const moviesSlice = createSlice({
                 state.status = 'error'
             })
             .addCase(searchMovies.fulfilled, (state, action) => {
+                state.data = action.payload;
+                state.status = 'done'
+            })
+            .addCase(nextPage.fulfilled, (state, action) => {
                 state.data = action.payload;
                 state.status = 'done'
             })

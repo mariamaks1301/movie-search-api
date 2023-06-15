@@ -20,7 +20,7 @@ const Search = ({search, setSearch, setMovies}) => {
         <div className='#424242 grey darken-3 '>
             <form className="container search__block">   
                 <DebounceInput  
-                    minLength={3}
+                    minLength={4}
                     debounceTimeout={500}
                     placeholder='Search'
                     type="search" 
